@@ -3,6 +3,10 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
     :root {
         --background: #f8f2f5; 
+        --background-modal: #e7e9ee;
+
+        --border-modal: #d7d7d7;
+
         --red: #e52e4d;
 
         --blue: #5429CC;        
@@ -12,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
         --text-title: #363F5F;
         --text-body: #969cb3;
+
 
         --shape: #ffffff;
     }
@@ -74,6 +79,21 @@ export const GlobalStyle = createGlobalStyle`
         padding: 3rem;
         position: relative;
         border-radius: 0.24rem;
+    }
+
+    .react-modal-close {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+        border: 0;
+        background: transparent;
+
+        transition: filter 0.2s;
+
+        &:hover {
+            filter: brightness(0.8);
+        }
+
     }
 
 `
