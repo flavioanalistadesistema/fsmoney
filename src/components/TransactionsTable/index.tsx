@@ -1,3 +1,5 @@
+import { format } from "path";
+import { transitions } from "polished";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
@@ -34,9 +36,22 @@ export function TransactionsTable() {
                         return (
                             <tr key={transaction.id}>
                                 <td>{transaction.title}</td>
-                                <td className={transaction.type}>{transaction.amount}</td>
+                                <td className={transaction.type}>
+                                    {new Intl.NumberFormat('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    }).format(transaction.amount)}
+                                </td>
                                 <td>{transaction.category}</td>
-                                <td>{transaction.createdAt}</td>
+                                <td>
+                                    {new Intl.DateTimeFormat('pt-BR', {
+                                        month: '2-digit',
+                                        day: '2-digit',
+                                        year: '2-digit',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    }).format(new Date(transaction.createdAt))}
+                                </td>
                             </tr>
                         )
                     })}
